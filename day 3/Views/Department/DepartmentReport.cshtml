@@ -1,0 +1,31 @@
+﻿@model day_1_MVC.Models.DepartmentDetailsViewModel
+
+@{
+    ViewData["Title"] = "Department Report";
+}
+
+<div class="container mt-4">
+    <h2>Department Report</h2>
+    <hr />
+    <div class="card p-3 shadow-sm">
+        <h4>Department Name: @Model.DepartmentName</h4>
+        <p class="mt-2"><strong>Department State:</strong> <span class="badge bg-primary">@Model.DepartmentState</span></p>
+
+        <div class="form-group mt-3">
+            <label><strong>Students (Age > 25) DropDownList:</strong></label>
+            @if (Model.OlderStudents != null && Model.OlderStudents.Any())
+            {
+                <select class="form-control mt-2">
+                    @foreach (var student in Model.OlderStudents)
+                    {
+                        <option value="@student.Id">@student.Name</option>
+                    }
+                </select>
+            }
+            else
+            {
+                <p class="text-muted mt-2">No students older than 25 found in this department.</p>
+            }
+        </div>
+    </div>
+</div>
